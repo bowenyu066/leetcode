@@ -23,4 +23,24 @@ from typing import List
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        
+        maxlen = 0
+        numdict = {}
+        for num in nums:
+            if num in numdict:
+                continue
+            lower = numdict.get(num - 1, 0)
+            upper = numdict.get(num + 1, 0)
+            length = 1 + lower + upper
+            numdict[num] = length
+            if lower:
+                numdict[num - lower] = length
+            if upper:
+                numdict[num + upper] = length
+            if length > maxlen:
+                maxlen = length
+        return maxlen
+    
+sol = Solution()
+print(sol.longestConsecutive([100,4,200,1,3,2]))
+print(sol.longestConsecutive([0,3,7,2,5,8,4,6,0,1]))
+print(sol.longestConsecutive([1,0,1,2]))
