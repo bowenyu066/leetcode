@@ -19,6 +19,10 @@
 - -109 <= nums[i] <= 109
 """
 
+"""
+Attempt 1: Sep 5, 2025. `maxlen` 的初始情况写成 1 了。解法没有标答好。
+"""
+
 from typing import List
 
 class Solution:
